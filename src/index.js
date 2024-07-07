@@ -5,7 +5,7 @@ function extractLinks(text){
   const regex = /\[([^[\]]*?)\]\((https?:\/\/[^\s?#.].[^\s]*)\)/gm;
   const catches = [...text.matchAll(regex)]
   const results = catches.map(catches => ({[catches[1]]: catches[2]}))
-  return results
+  return results.length !== 0 ? results : 'não há links no arquivo' 
 }
 
 function handleError(error) {
@@ -19,7 +19,7 @@ async function getFileWithAsync(filePath) {
   try {
     const encoding = 'utf-8';
     const text = await fs.promises.readFile(filePath, encoding)
-    console.log(extractLinks(text))
+    return extractLinks(text)
   } catch (error) {
     handleError(error)
   }
@@ -36,4 +36,4 @@ function getFileWithThen(filePath) {
     .catch(handleError)
 }
 
-getFileWithAsync('./arquivos/texto.md');
+export default getFileWithAsync
