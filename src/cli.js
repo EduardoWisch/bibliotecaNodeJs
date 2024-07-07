@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 import getFileWithAsync from "./index.js"
 import fs from 'fs'
 import chalk from "chalk"
