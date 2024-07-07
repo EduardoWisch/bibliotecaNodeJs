@@ -1,3 +1,5 @@
+import chalk from "chalk"
+
 function extractLinks(linksArray){
     return linksArray.map((linkObject) => Object.values(linkObject).join())
 }
@@ -5,11 +7,23 @@ function extractLinks(linksArray){
 async function checkStatus(listURLs){
     const statusArray = await Promise.all(
         listURLs.map( async (url) => {
-            const response = await fetch(url)
-            return response.status
+            try {
+                const response = await fetch(url)
+                return response.status
+            } catch (error) {
+                return handleErrors(error)
+            }
         })
     )
     return statusArray
+}
+
+function handleErrors(error){
+  if (error.cause.code === 'ENOTFOUND'){
+    return "link não encontrado"
+  } else {
+    return 'ocorreu algum erro'
+  }
 }
 
 export default async function validatedList(linksList){
