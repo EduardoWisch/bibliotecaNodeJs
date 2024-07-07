@@ -1,18 +1,21 @@
 {
   "name": "eduardoescolabiblioteca",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Preciso da nota",
   "main": "./cli.js",
   "type": "module",
   "bin": {
-   "eduardoescolabiblioteca": "./cli.js"
- },
- "preferGlobal": true,
+    "eduardoescolabiblioteca": "./cli.js"
+  },
+  "preferGlobal": true,
   "repository": {
     "type": "git",
     "url": "git+https://github.com/alura-cursos/2708-node-lib-md.git"
   },
-  "keywords": ["markdown", "URL"],
+  "keywords": [
+    "markdown",
+    "URL"
+  ],
   "author": "",
   "license": "ISC",
   "bugs": {
